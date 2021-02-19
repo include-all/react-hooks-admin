@@ -8,6 +8,7 @@ const Test: React.FC = () => {
   const dispatch = useDispatch()
   return (
     <div className="app">
+      <p>login success</p>
       <p>{count}</p>
       <button type="button" onClick={() => dispatch(exp.increase(2))}>
         +2
