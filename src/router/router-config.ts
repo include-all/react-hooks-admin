@@ -1,4 +1,4 @@
-const Test = () => import(/* webpackChunkName: "test" */ '../views/test/test')
+const Test = () => import(/* webpackChunkName: "test" */ '../views/home/test')
 const Login = () => import(/* webpackChunkName: "login" */ '../views/login/index')
 
 const routerConfig = {

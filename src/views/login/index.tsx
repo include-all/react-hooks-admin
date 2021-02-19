@@ -1,11 +1,11 @@
 import './style.less'
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
-import { Form, Input, Button, message } from 'antd'
+import { Form, Input, Button } from 'antd'
 import { AimOutlined } from '@ant-design/icons'
 
-import axios from 'axios'
+import { authApi } from '../../data/api'
 
 const FormItem = Form.Item
 
@@ -25,29 +25,18 @@ const tailLayout = {
   },
 }
 
-const LoginForm = () => {
+const LoginForm: FC = () => {
   const [formData, setFormData] = useState({ username: '', password: '' })
-  const changeFormData = (e: any, type: string) => {
+  const changeFormData = (e: React.ChangeEvent<HTMLInputElement>, type: string) => {
     setFormData({
       ...formData,
       [type]: e.target.value,
     })
   }
   const history = useHistory()
-  const login = () => {
-    axios
-      .post('/api/auth/login', formData)
-      .then(({ data }) => {
-        if (!data.errCode) {
-          history.push('/')
-        } else {
-          message.error(data.errMsg)
-        }
-        return null
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+  const login = async () => {
+    await authApi.login(formData)
+    history.push('/')
   }
   return (
     <Form {...layout}>
@@ -66,7 +55,7 @@ const LoginForm = () => {
   )
 }
 
-const Login = () => (
+const Login: FC = () => (
   <div className="login">
     <div className="form">
       <div className="title">

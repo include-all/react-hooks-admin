@@ -107,6 +107,7 @@ module.exports = {
     'no-unused-expressions': WARN,
     'no-plusplus': OFF,
     'no-console': OFF,
+    'promise/no-promise-in-callback': OFF,
     'class-methods-use-this': ERROR,
     'global-require': OFF,
     'no-use-before-define': OFF,
