@@ -13,9 +13,9 @@ const WebpackBar = require('webpackbar')
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin')
 // 提取css
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-// 删除无关样式
-const glob = require('glob')
-const PurgeCSSPlugin = require('purgecss-webpack-plugin')
+// 删除无关样式 会导致antd在mini-css-extract-plugin下无效
+// const glob = require('glob')
+// const PurgeCSSPlugin = require('purgecss-webpack-plugin')
 // 压缩css
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
@@ -168,11 +168,11 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash:8].css',
       chunkFilename: 'css/[name].[contenthash:8].css',
-      ignoreOrder: false,
+      ignoreOrder: true,
     }),
-    new PurgeCSSPlugin({
-      paths: glob.sync(`${resolve(PROJECT_PATH, './src')}/**/*.{tsx,scss,less,css}`, { nodir: true }),
-      whitelist: ['html', 'body'],
-    }),
+    // new PurgeCSSPlugin({
+    //   paths: glob.sync(`${resolve(PROJECT_PATH, './src')}/**/*.{tsx,scss,less}`, { nodir: true }),
+    //   whitelist: ['html', 'body'],
+    // }),
   ],
 }

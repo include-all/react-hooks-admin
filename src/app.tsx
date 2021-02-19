@@ -1,4 +1,4 @@
-import 'antd/dist/antd.css'
+import 'antd/dist/antd'
 import './app.less'
 import React from 'react'
 
