@@ -11,7 +11,6 @@
     "@babel/preset-typescript"
   ],
   "plugins": [
-    ["import", { "libraryName": "antd", "style": "css" }],
     [
       "@babel/plugin-transform-runtime",
       {
@@ -21,6 +20,7 @@
         },
         "useESModules": true
       }
-    ]
+    ],
+    ["import", { "libraryName": "antd", "style": "css" }]
   ]
 }
