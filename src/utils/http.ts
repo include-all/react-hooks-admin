@@ -19,6 +19,11 @@ axios.interceptors.response.use(
     return Promise.resolve(response.data)
   },
   (err) => {
+    const { status } = err.response
+    console.log(status)
+    if (status === 401) {
+      window.location.href = '/login'
+    }
     message.error(err)
     return Promise.reject(err)
   },

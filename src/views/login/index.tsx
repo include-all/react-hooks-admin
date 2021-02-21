@@ -1,6 +1,6 @@
 import './style.less'
 import React, { FC, useState } from 'react'
-import { useHistory } from 'react-router-dom'
+// import { useHistory } from 'react-router-dom'
 
 import { Form, Input, Button } from 'antd'
 import { AimOutlined } from '@ant-design/icons'
@@ -33,10 +33,10 @@ const LoginForm: FC = () => {
       [type]: e.target.value,
     })
   }
-  const history = useHistory()
+  // const history = useHistory()
   const login = async () => {
     await authApi.login(formData)
-    history.push('/')
+    window.location.href = '/'
   }
   return (
     <Form {...layout}>
